@@ -2,13 +2,7 @@ node('master')
 {
     stage('git')
     {
-    sh'''
-    cd /var/lib/jenkins/workspace/
-    rm -rf demo
-    git clone https://github.com/balakrishna-pushparajan/demo.git
-    
-    '''
-        
+    checkout scm        
     }
     stage('Containerization')
     {
