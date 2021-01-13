@@ -7,7 +7,7 @@ node('master')
     stage('Containerization')
     {
         sh'''
-        cd /var/lib/jenkins/workspace/demo/
+        cd /var/lib/jenkins/workspace/Devops/
         docker build -t balakrishnapushparajan/demo:demo .
         '''
     }
