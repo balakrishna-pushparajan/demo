@@ -18,7 +18,7 @@ node('master')
         '''
     }
     registry = "balakrishnapushparajan/demo"
-    withDockerRegistry(credentialsId:'docker', url: '')
+    withDockerRegistry(credentialsId:'dockerbala', url: '')
     {
        sh'''
        docker push balakrishnapushparajan/demo:demo
