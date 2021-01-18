@@ -1,0 +1,124 @@
+Resource group creation:
+
+Command: az group create --name plant --location "Central US"
+
+Output:
+{
+  "id": "/subscriptions/da748392-fe28-4e31-b8d1-c9df2d7259fa/resourceGroups/plant",
+  "location": "centralus",
+  "managedBy": null,
+  "name": "plant",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+
+
+
+Azure Blob Storage account creation:
+
+
+Command: az deployment group create --name storagewithblob  --resource-group plant --template-file $templateFile
+         Please provide string value for 'storageAccountName' (? for help): rubystone
+
+Output:
+
+{- Finished ..
+  "id": "/subscriptions/da748392-fe28-4e31-b8d1-c9df2d7259fa/resourceGroups/plant/providers/Microsoft.Resources/deployments/storagewithblob",
+  "location": null,
+  "name": "storagewithblob",
+  "properties": {
+    "correlationId": "d1940e56-7e7b-4cf0-9317-690838792af4",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/da748392-fe28-4e31-b8d1-c9df2d7259fa/resourceGroups/plant/providers/Microsoft.Storage/storageAccounts/rubystone",
+            "resourceGroup": "plant",
+            "resourceName": "rubystone",
+            "resourceType": "Microsoft.Storage/storageAccounts"
+          }
+        ],
+        "id": "/subscriptions/da748392-fe28-4e31-b8d1-c9df2d7259fa/resourceGroups/plant/providers/Microsoft.Storage/storageAccounts/rubystone/blobServices/default/containers/logs",
+        "resourceGroup": "plant",
+        "resourceName": "rubystone/default/logs",
+        "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers"
+      }
+    ],
+    "duration": "PT43.8424341S",
+    "error": null,
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "id": "/subscriptions/da748392-fe28-4e31-b8d1-c9df2d7259fa/resourceGroups/plant/providers/Microsoft.Storage/storageAccounts/rubystone",
+        "resourceGroup": "plant"
+      },
+      {
+        "id": "/subscriptions/da748392-fe28-4e31-b8d1-c9df2d7259fa/resourceGroups/plant/providers/Microsoft.Storage/storageAccounts/rubystone/blobServices/default/containers/logs",
+        "resourceGroup": "plant"
+      }
+    ],
+    "outputs": null,
+    "parameters": {
+      "containerName": {
+        "type": "String",
+        "value": "logs"
+      },
+      "location": {
+        "type": "String",
+        "value": "centralus"
+      },
+      "storageAccountName": {
+        "type": "String",
+        "value": "rubystone"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.Storage",
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locations": [
+              "centralus"
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts"
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "storageAccounts/blobServices/containers"
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "10026452108377198256",
+    "templateLink": null,
+    "timestamp": "2021-01-12T20:37:40.174772+00:00",
+    "validatedResources": null
+  },
+  "resourceGroup": "plant",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
